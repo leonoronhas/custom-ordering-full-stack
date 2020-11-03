@@ -14,7 +14,7 @@ const index = express();
 // Template engine EJS
 index.set("view engine", "ejs");
 index.set("views", "views");
-
+ 
 // Middlewares
 index.use(bodyParser.urlencoded({ extended: false }));
 index.use(express.static(path.join(__dirname, "public")));
