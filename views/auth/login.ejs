@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <!-- <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %> -->
+
+        <form class="login-form" action="/login" method="POST" novalidate>
+            <label class="form-control">Login</label>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    value="<%= oldInput.email %>"
+                >
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                    type="password" 
+                    name="password" 
+                    id="password"
+                    value="<%= oldInput.password %>"
+                >
+            </div>
+            <!-- Do not forget to add the token and the name "_csrf"-->
+            <!-- THE NAME MUST BE "_csrf"-->
+         
+            <div class="centered">
+                <button class="btn" type="submit">Login</button>
+            </div>
+            <div class="centered">
+                <p>Having trouble? Try 
+                    <a class="reset" href="/reset">reseting your password</a>
+                </p>
+        </div>
+        </form>
+        
+    </main>
+<%- include('../includes/end.ejs') %>
