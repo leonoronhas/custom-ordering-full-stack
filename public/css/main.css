@@ -269,4 +269,10 @@ form {
   .user-message {
     width: 30rem;
   }
+
+  .logo {
+    width: 6.5rem;
+    height: 3rem;
+  }
+  
 }
