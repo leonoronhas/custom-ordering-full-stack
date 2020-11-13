@@ -7,6 +7,26 @@ require("dotenv/config");
 
 const User = require("../models/user");
 
+exports.getIndex = (req, res, next) => {
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render("auth/index", {
+    path: "/",
+    pageTitle: "Login",
+    isAuthenticated: false,
+    errorMessage: message,
+    oldInput: {
+      email: "",
+      password: "",
+    },
+    validationErrors: [],
+  });
+};
+
 // Nodemailer configuration
 const transporter = nodemailer.createTransport(
   sendgridTransport({
