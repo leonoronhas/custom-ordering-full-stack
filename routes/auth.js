@@ -16,6 +16,9 @@ const authController = require("../controllers/authController");
 const User = require("../models/user");
 
 // GET -> /auth/login
+router.get("/", authController.getIndex);
+
+// GET -> /auth/login
 router.get("/login", authController.getLogin);
 
 // GET -> /auth/signup
