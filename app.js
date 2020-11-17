@@ -24,7 +24,10 @@ app.set("views", "views");
 
 // Routes
 const authRoutes = require("./routes/auth");
- 
+const projectRoutes = require("./routes/projects");
+
+app.use('/project', projectRoutes);
+
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
