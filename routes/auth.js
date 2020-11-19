@@ -2,7 +2,7 @@
  *  Authentication Routes
  * 
  *  GET:
- *      Login | Sign Up | Reset | Reset:Token
+ *      Index | FAQ | About Us | About Our Process | Login | Sign Up | Reset | Reset:Token
  *  POST:
  *      Login | Sign Up | Logout | Reset | New password
  *
@@ -15,8 +15,17 @@ const authController = require("../controllers/authController");
 
 const User = require("../models/user");
 
-// GET -> /auth/login
+// GET -> /auth/index
 router.get("/", authController.getIndex);
+
+// GET -> /auth/faq
+router.get("/faq", authController.getFaq);
+
+// GET -> /auth/aboutUs
+router.get("/aboutUs", authController.getAboutUs);
+
+// GET -> /auth/aboutOurProcess
+router.get("/aboutOurProcess", authController.getAboutOurProcess);
 
 // GET -> /auth/login
 router.get("/login", authController.getLogin);
