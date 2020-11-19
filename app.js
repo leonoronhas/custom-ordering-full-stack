@@ -26,7 +26,7 @@ app.set("views", "views");
 const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 
-app.use('/project', projectRoutes);
+app.use("/project", projectRoutes);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,7 +48,7 @@ app.use(authRoutes);
 
 // Handle different domains
 const corsOptions = {
-  origin: "https://e-commerce-node-example.herokuapp.com/",
+  origin: "https://custom-cnc.herokuapp.com/",
   optionsSuccessStatus: 200,
 };
 
@@ -70,4 +70,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
