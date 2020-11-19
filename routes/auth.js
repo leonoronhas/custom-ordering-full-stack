@@ -22,10 +22,10 @@ router.get("/", authController.getIndex);
 router.get("/faq", authController.getFaq);
 
 // GET -> /auth/aboutUs
-router.get("/aboutUs", authController.getAboutUs);
+router.get("/about-us", authController.getAboutUs);
 
 // GET -> /auth/aboutOurProcess
-router.get("/aboutOurProcess", authController.getAboutOurProcess);
+router.get("/about-our-process", authController.getAboutOurProcess);
 
 // GET -> /auth/login
 router.get("/login", authController.getLogin);
