@@ -18,6 +18,7 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
+// Redirect to HTTPS to avoid Heroku privacy url warning
 if(process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
     if (req.header('x-forwarded-proto') !== 'https')
