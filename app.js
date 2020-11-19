@@ -3,7 +3,6 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const multer = require("multer");
 const csrf = require("csurf");
 const cors = require("cors");
 const flash = require("connect-flash"); // special area of the session used for storing messages
@@ -25,7 +24,10 @@ app.set("views", "views");
 
 // Routes
 const authRoutes = require("./routes/auth");
- 
+const projectRoutes = require("./routes/projects");
+
+app.use('/project', projectRoutes);
+
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
