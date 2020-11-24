@@ -35,11 +35,16 @@ app.set("views", "views");
 // Routes
 const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
+const openLinksRoutes = require("./routes/open-links");
 
+// Default Routes
 app.use("/project", projectRoutes);
+app.use(authRoutes);
+app.use(openLinksRoutes);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
@@ -53,8 +58,8 @@ app.use(
   })
 );
 
-// Default Routes
-app.use(authRoutes);
+
+
 
 // Handle different domains
 const corsOptions = {
