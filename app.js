@@ -18,6 +18,16 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
+// Redirect to HTTPS to avoid Heroku privacy url warning
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next();
+  })
+}
+
 // Template engine EJS
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -26,7 +36,7 @@ app.set("views", "views");
 const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 
-app.use('/project', projectRoutes);
+app.use("/project", projectRoutes);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,7 +58,7 @@ app.use(authRoutes);
 
 // Handle different domains
 const corsOptions = {
-  origin: "https://e-commerce-node-example.herokuapp.com/",
+  origin: "https://custom-cnc.herokuapp.com/",
   optionsSuccessStatus: 200,
 };
 
@@ -70,4 +80,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
