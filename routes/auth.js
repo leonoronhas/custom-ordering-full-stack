@@ -101,6 +101,7 @@ router.get("/reset/:token", authController.getNewPassword);
 // POST -> /auth/new-password
 router.post("/new-password", authController.postNewPassword);
 
+<<<<<<< HEAD
 // GET -> /checkout
 router.get("/checkout", authController.getCheckout);
 
@@ -111,4 +112,6 @@ router.get("/checkout/success", authController.getCheckout);
 router.get("/checkout/cancel", authController.getCheckout);
 
 
+=======
+>>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c
 module.exports = router;

@@ -5,10 +5,13 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 const { validationResult } = require("express-validator");
 require("dotenv/config");
 
+<<<<<<< HEAD
 const stripe = require("stripe")
       ('sk_test_51HqqvWHAqscsU7v6JTypi5rRtY08RViMXMau0zh8Mir8TDuJMUAQ7Px111gzznQvzjbWODuBmQR9D9qvUC9SSRme004k978m0T');
 
 
+=======
+>>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c
 const User = require("../models/user");
 
 exports.getIndex = (req, res, next) => {
@@ -374,6 +377,7 @@ exports.postNewPassword = (req, res, next) => {
       console.log(err);
     });
 };
+<<<<<<< HEAD
 
 /*******************************************
 * CHECKOUT
@@ -432,3 +436,5 @@ exports.getCheckout = (req, res, next) =>
       console.log(err);
     });
 }
+=======
+>>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c

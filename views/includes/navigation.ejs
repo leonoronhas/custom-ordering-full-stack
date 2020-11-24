@@ -1,0 +1,80 @@
+<div class="backdrop"></div>
+<header class="main-header">
+  <button id="side-menu-toggle">Menu</button>
+  <nav class="main-header__nav">
+    <ul class="main-header__item-list">
+      <div>
+        <li class="main-header__item">
+          <a class="<%= path === '/' ? 'active' : '' %>" href="/" style="padding: 0 0rem; margin: 0"><img class="logo" src="images\cncLogo.png" alt="CNC"></a>
+        </li>
+      </div>
+      <div class="leftContainer">
+        <li class="main-header__item">
+          <a class="<%= path === '/login' ? 'active' : '' %>" href="/login"
+            >Account</a
+          >
+        </li>
+        <li class="main-header__item">
+          <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup"
+            >Sign Up</a
+          >
+        </li>
+      </div>
+    </ul>
+  </nav>
+</header>
+
+<nav class="mobile-nav">
+  <ul class="mobile-nav__item-list">
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/' ? 'active' : '' %>" href="/">SHOP</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/products' ? 'active' : '' %>" href="/products"
+        >PRODUCTS</a
+      >
+    </li>
+
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">CART</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders"
+        >ORDERS</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+        href="/admin/add-product"
+        >ADD PRODUCT
+      </a>
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/admin/products' ? 'active' : '' %>"
+        href="/admin/products"
+        >ADMIN
+      </a>
+    </li>
+
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/login' ? 'active' : '' %>" href="/login"
+        >Login</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup"
+        >Sign Up</a
+      >
+    </li>
+
+    <li class="mobile-nav__item">
+      <form action="/logout" method="post">
+        <!-- Do not forget to add the token and the name "_csrf"-->
+        <!-- THE NAME MUST BE "_csrf"-->
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+  </ul>
+</nav>
