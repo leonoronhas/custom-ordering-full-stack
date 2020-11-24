@@ -2,7 +2,7 @@
  *  Authentication Routes
  * 
  *  GET:
- *      Index | FAQ | About Us | About Our Process | Login | Sign Up | Reset | Reset:Token
+ *      Login | Sign Up | Reset | Reset:Token
  *  POST:
  *      Login | Sign Up | Logout | Reset | New password
  *
