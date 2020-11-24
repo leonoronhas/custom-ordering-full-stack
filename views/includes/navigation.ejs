@@ -8,7 +8,13 @@
           <a class="<%= path === '/' ? 'active' : '' %>" href="/" style="padding: 0 0rem; margin: 0"><img class="logo" src="images\cncLogo.png" alt="CNC"></a>
         </li>
       </div>
+
       <div class="leftContainer">
+        <li class="main-header__item">
+          <a class="<%= path === '/signup' ? 'active' : '' %>" href="/orders"
+            >Check orders</a
+          >
+        </li>
         <li class="main-header__item">
           <a class="<%= path === '/login' ? 'active' : '' %>" href="/login"
             >Account</a
