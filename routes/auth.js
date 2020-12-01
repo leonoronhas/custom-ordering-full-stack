@@ -15,18 +15,6 @@ const authController = require("../controllers/authController");
 
 const User = require("../models/user");
 
-// GET -> /auth/index
-router.get("/", authController.getIndex);
-
-// GET -> /auth/faq
-router.get("/faq", authController.getFaq);
-
-// GET -> /auth/aboutUs
-router.get("/about-us", authController.getAboutUs);
-
-// GET -> /auth/aboutOurProcess
-router.get("/about-our-process", authController.getAboutOurProcess);
-
 // GET -> /auth/login
 router.get("/login", authController.getLogin);
 

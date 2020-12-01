@@ -18,14 +18,16 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
+// CSRF - Cross Site Request Forgery
+const csrfProtection = csrf();
+
 // Redirect to HTTPS to avoid Heroku privacy url warning
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    else
-      next();
-  })
+    if (req.header("x-forwarded-proto") !== "https")
+      res.redirect(`https://${req.header("host")}${req.url}`);
+    else next();
+  });
 }
 
 // Template engine EJS
@@ -36,11 +38,6 @@ app.set("views", "views");
 const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 const openLinksRoutes = require("./routes/open-links");
-
-// Default Routes
-app.use("/project", projectRoutes);
-app.use(authRoutes);
-app.use(openLinksRoutes);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -58,14 +55,34 @@ app.use(
   })
 );
 
+// Add csrf protection after the session has been created
+app.use(csrfProtection);
 
+/* Tell express to load this for every view EXPRESS LOCALS
+Add the following anywhere where there is a POST form
 
+  <!-- Do not forget to add the token and the name "_csrf"-->
+  <!-- THE NAME MUST BE "_csrf"-->
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+*/
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+  next(); // Do not forget this
+});
+/* END OF EXPRESS LOCALS */
+
+// Default Routes
+app.use("/project", projectRoutes);
+app.use(authRoutes);
+app.use(openLinksRoutes);
 
 // Handle different domains
 const corsOptions = {
   origin: "https://custom-cnc.herokuapp.com/",
   optionsSuccessStatus: 200,
 };
+
 
 // 404 handler
 app.use(errorController.get404).use(cors(corsOptions));

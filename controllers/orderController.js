@@ -1,3 +1,6 @@
+const Product = require('../models/project');
+const Order = require('../models/order');
+  
   exports.getOrders = (req, res, next) => {
     Order.find({ 'user.userId': req.user._id })
       .then(orders => {
@@ -7,11 +10,7 @@
           orders: orders
         });
       })
-      .catch(err => {
-        const error = new Error(err);
-        error.httpStatusCode = 500;
-        return next(error);
-      });
+      .catch(err => { });
   };
 
 exports.postOrder = (req, res, next) => {
@@ -37,9 +36,5 @@ exports.postOrder = (req, res, next) => {
       .then(() => {
         res.redirect('/orders');
       })
-      .catch(err => {
-        const error = new Error(err);
-        error.httpStatusCode = 500;
-        return next(error);
-      });
+      .catch(err => {});
   };
