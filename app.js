@@ -38,6 +38,7 @@ app.set("views", "views");
 const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 const openLinksRoutes = require("./routes/open-links");
+const adminRoutes = require("./routes/admin");
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,6 +68,7 @@ Add the following anywhere where there is a POST form
 */
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.isAdmin = req.session.isAdmin;
   res.locals.csrfToken = req.csrfToken();
   next(); // Do not forget this
 });
@@ -76,13 +78,13 @@ app.use((req, res, next) => {
 app.use("/project", projectRoutes);
 app.use(authRoutes);
 app.use(openLinksRoutes);
+app.use("/admin", adminRoutes);
 
 // Handle different domains
 const corsOptions = {
   origin: "https://custom-cnc.herokuapp.com/",
   optionsSuccessStatus: 200,
 };
-
 
 // 404 handler
 app.use(errorController.get404).use(cors(corsOptions));
