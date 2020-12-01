@@ -7,31 +7,11 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <!-- <% if(errorMessage) { %>
+        <% if(errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
-        <% } %> -->
+        <% } %>
         <form class="login-form" action="/signup" method="POST" novalidate>
             <label class="form-control">Create Account</label>
-            <div class="form-control">
-                <label for="firstName">First name</label>
-                <input 
-                    class="<%= validationErrors.find(e => e.param === 'firstName') ? 'invalid' : '' %>"
-                    type="firstName" 
-                    name="firstName" 
-                    id="firstName" 
-                    value="<%= oldInput.firstName %>"
-                >
-            </div>
-            <div class="form-control">
-                <label for="lastName">Last name</label>
-                <input 
-                    class="<%= validationErrors.find(e => e.param === 'lastName') ? 'invalid' : '' %>"
-                    type="lastName" 
-                    name="lastName" 
-                    id="lastName" 
-                    value="<%= oldInput.lastName %>"
-                >
-            </div>
             <div class="form-control">
                 <label for="email">Email</label>
                 <input 
@@ -64,6 +44,7 @@
             </div>
             <!-- Do not forget to add the token and the name "_csrf"-->
             <!-- THE NAME MUST BE "_csrf"-->
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="centered">
                 <button class="btn" type="submit">Create Account</button>
             </div>
@@ -71,7 +52,7 @@
                 <p>Already have an account? 
                     <a class="reset" href="/login">Login</a>
                 </p>
-        </div>
+            </div>
         </form>
     </main>
 <%- include('../includes/end.ejs') %>
