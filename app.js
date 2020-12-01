@@ -67,6 +67,8 @@ Add the following anywhere where there is a POST form
 */
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.isAdmin = req.session.isAdmin;
+  console.log(res.locals.isAdmin);
   res.locals.csrfToken = req.csrfToken();
   next(); // Do not forget this
 });
