@@ -17,14 +17,14 @@ const multerUtil = require("../util/multerUtil");
 const authUtil = require("../util/auth");
 
 router.get(
-  "/createProject",
+  "/create-project",
   isAuth,
   authUtil.userLoginCheck,
   projectController.getCreateProject
 );
 
 router.post(
-  "/createProject",
+  "/create-project",
   isAuth,
   authUtil.userLoginCheck,
   multerUtil.projectUploadLocal.array("projectFiles", 8),
