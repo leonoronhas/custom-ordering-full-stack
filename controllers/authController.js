@@ -113,7 +113,8 @@ exports.postLogin = (req, res, next) => {
                 res.redirect("/admin/pending-orders");
               });
             }
-          } else {
+          } 
+          if (user.isAdmin === false) {
             return req.session.save((err) => {
               if (err === undefined) {
                 // Do nothing
