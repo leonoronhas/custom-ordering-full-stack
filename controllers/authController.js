@@ -100,7 +100,20 @@ exports.postLogin = (req, res, next) => {
           if (passwordMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
+            req.session.isAdmin = user.isAdmin;
             console.log("USER IS LOGGED IN");
+            // Return admin view
+            if (user.isAdmin === true) {
+              return req.session.save((err) => {
+                if (err === undefined) {
+                  // Do nothing
+                } else {
+                  console.log("ERROR saving session: " + err);
+                }
+                res.redirect("/admin/pending-orders");
+              });
+            }
+          } else {
             return req.session.save((err) => {
               if (err === undefined) {
                 // Do nothing
