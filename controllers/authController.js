@@ -110,7 +110,7 @@ exports.postLogin = (req, res, next) => {
                 } else {
                   console.log("ERROR saving session: " + err);
                 }
-                res.redirect("/pending-orders");
+                res.redirect("/admin/pending-orders");
               });
             }
           } else {
