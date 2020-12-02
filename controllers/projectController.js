@@ -1,5 +1,7 @@
 const express = require('express');
 
+const Project = require('../models/project');
+
 exports.getProjects = (req, res) => {
     res.render('projects/projects',
               {
@@ -17,8 +19,27 @@ exports.getCreateProject = (req, res) => {
 
 exports.postCreateProject = (req, res) => {
   const files = req.files;
-  if (!files) {
+  console.log(files);
+  if (!files || files == []) {
     console.log("No files were uploaded!");
     res.redirect('project/createProject');
+  } else {
+    const newProject = new Project();
+    const description = req.body.description;
+    const fileNames = [];
+
+    files.forEach(x => {
+      fileNames.push(x.filename);
+    });
+
+    newProject.customer = req.session.user._id;
+    newProject.description = description;
+    newProject.projectFiles = fileNames;
+
+    newProject.save();
+
+    res.redirect('/project');
+
   }
+
 }
