@@ -8,3 +8,8 @@
     padding: 30px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
+
+  .user-message user-message--error {
+    color: red;
+    background-color: rgba(255, 113, 113, 0.39);
+  }
