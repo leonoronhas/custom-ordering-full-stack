@@ -14,21 +14,24 @@ const projectController = require("../controllers/projectController");
 const isAuth = require("../middleware/is-auth"); // Protected route
 
 const multerUtil = require("../util/multerUtil");
-const authUtil = require("../util/auth");
 
 router.get(
-  "/create-project",
-  isAuth,
-  authUtil.userLoginCheck,
-  projectController.getCreateProject
+    '/',
+    isAuth,
+    projectController.getProjects
+);
+
+router.get(
+    "/createProject",
+    isAuth,
+    projectController.getCreateProject
 );
 
 router.post(
-  "/create-project",
-  isAuth,
-  authUtil.userLoginCheck,
-  multerUtil.projectUploadLocal.array("projectFiles", 8),
-  projectController.postCreateProject
+    "/createProject",
+    isAuth,
+    multerUtil.projectUploadLocal.array("projectFiles", 8),
+    projectController.postCreateProject
 );
 
 module.exports = router;

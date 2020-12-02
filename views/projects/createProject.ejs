@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <%- include('../includes/cnc.ejs') %>
+
+    <div class="centered">
+        <form action="/project/createProject?_csrf=<%= csrfToken %>" enctype="multipart/form-data" method="POST">
+            <input type="file" name="projectFiles" multiple>
+            <textarea name="description">
+                Enter Project Description Here
+            </textarea>
+
+            <!-- Do not forget to add the token and the name "_csrf"-->
+            <!-- THE NAME MUST BE "_csrf"-->
+            <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>" /> -->
+
+            <button class="btn" type="submit">Submit Project</button>
+        </form>
+    </div>
+</body>
+
+<%- include('../includes/end.ejs') %>

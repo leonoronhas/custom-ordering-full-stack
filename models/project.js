@@ -14,7 +14,7 @@ const projectSchema = new Schema({
     },
 
     projectFiles:{
-        type: String, //Path to folder of CAD files, CDN or test dir.
+        type: [String], //Path to folder of CAD files, CDN or test dir.
         required: true
     },
 
