@@ -4,11 +4,16 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-    <%- include('../includes/cnc.ejs') %>
+    <main>
 
-    <div class="centeredSpace">
-        <h3> <a href="/project/createProject"> Create New Project </a> </h3>
-    </div>
+        <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+
+        <div class="centeredSpace">
+            <h3> <a href="/project/createProject"> Create New Project </a> </h3>
+        </div>
+    </main>
 </body>
 
 <%- include('../includes/end.ejs') %>

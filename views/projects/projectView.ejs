@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+
+        <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+
+        <div>
+            <h1> <%= projectName %> </h1>
+
+            <label for="projectDescription"> Project Description: </label>
+            <p id="projectDescription"> <%= description %> </p>
+
+            <% if(quotePrice) { %>
+                <div>
+                    <h3> Quoted Price: $<%= quotePrice %> </h3>
+                </div>
+
+                <% if(agreesToQuote) { %>
+                    <h2> Link to checkout should go here!! </h2>
+                <% } else { %>
+                    <form action="/project/agreeToQuote" method="POST">
+                        <input type="hidden" value="<%= projectId %>" name="projectId">
+                        <button type="submit" value="Agree to Price">
+                    </form>
+                <% } %>
+            <% } else { %>
+                <p> Please wait for an employee to quote your project. </p>
+            <% } %>
+        </div>
+
+    </main>
+</body>
+
+<%- include('../includes/end.ejs') %>
