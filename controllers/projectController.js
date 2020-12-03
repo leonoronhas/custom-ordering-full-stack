@@ -33,6 +33,7 @@ exports.postCreateProject = (req, res) => {
     res.redirect('/project/createProject');
   } else {
     const newProject = new Project();
+    const projectName = req.body.projectName;
     const description = req.body.description;
     const fileNames = [];
 
@@ -41,6 +42,7 @@ exports.postCreateProject = (req, res) => {
     });
 
     newProject.customer = req.session.user._id;
+    newProject.projectName = projectName;
     newProject.description = description;
     newProject.projectFiles = fileNames;
 
