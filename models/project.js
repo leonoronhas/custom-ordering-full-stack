@@ -42,6 +42,11 @@ const projectSchema = new Schema({
         type: Boolean,
         default: false,
         require: true
+    },
+
+    employeeComment: {
+        type: String,
+        required: false
     }
 });
 
