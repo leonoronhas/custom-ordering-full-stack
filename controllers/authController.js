@@ -5,13 +5,11 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 const { validationResult } = require("express-validator");
 require("dotenv/config");
 
-<<<<<<< HEAD
+
 const stripe = require("stripe")
-      ('sk_test_51HqqvWHAqscsU7v6JTypi5rRtY08RViMXMau0zh8Mir8TDuJMUAQ7Px111gzznQvzjbWODuBmQR9D9qvUC9SSRme004k978m0T');
+       ('sk_test_51HqqvWHAqscsU7v6JTypi5rRtY08RViMXMau0zh8Mir8TDuJMUAQ7Px111gzznQvzjbWODuBmQR9D9qvUC9SSRme004k978m0T');
 
 
-=======
->>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c
 const User = require("../models/user");
 
 // Nodemailer configuration
@@ -323,64 +321,59 @@ exports.postNewPassword = (req, res, next) => {
       console.log(err);
     });
 };
-<<<<<<< HEAD
 
 /*******************************************
 * CHECKOUT
 ********************************************/
 
-exports.getCheckout = (req, res, next) => 
-{
-  let product;
-  return stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-      // line items: product.map(p=> {
-      //   return {
-      //     currency: 'usd'
-      //   }
-      // }),
-      success_url: req.protocol + '://' + req.get('host') + '/checkout/success',
-      cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
+// exports.getCheckout = (req, res, next) => 
+// {
+//   let product;
+//   return stripe.checkout.sessions.create({
+//     payment_method_types: ['card'],
+//         return {
+//           currency: 'usd'
+//         },
+//       success_url: req.protocol + '://' + req.get('host') + '/checkout/success',
+//       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
 
-  })
+//   })
 
-  // req.user
-  //   .populate('cart.items.productId')
-  //   .execPopulate()
-  //   .then(user => {
-  //     products = user.cart.items;
-  //     total = 0;
-  //     products.forEach(p => {
-  //       total += p.quantity * p.productId.price;
-  //     });
+//   // req.user
+//   //   .populate('cart.items.productId')
+//   //   .execPopulate()
+//   //   .then(user => {
+//   //     products = user.cart.items;
+//   //     total = 0;
+//   //     products.forEach(p => {
+//   //       total += p.quantity * p.productId.price;
+//   //     });
 
-  //     return stripe.checkout.sessions.create({
-  //       payment_method_types: ['card'],
-  //       line_items: products.map(p => {
-  //         return {
-  //           name: p.productId.title,
-  //           description: p.productId.description,
-  //           amount: p.productId.price * 100,
-  //           currency: 'usd',
-  //           quantity: p.quantity
-  //         };
-  //       }),
-  //       success_url: req.protocol + '://' + req.get('host') + '/checkout/success', // => http://localhost:3000
-  //       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
-  //     });
-  //   })
+//   //     return stripe.checkout.sessions.create({
+//   //       payment_method_types: ['card'],
+//   //       line_items: products.map(p => {
+//   //         return {
+//   //           name: p.productId.title,
+//   //           description: p.productId.description,
+//   //           amount: p.productId.price * 100,
+//   //           currency: 'usd',
+//   //           quantity: p.quantity
+//   //         };
+//   //       }),
+//   //       success_url: req.protocol + '://' + req.get('host') + '/checkout/success', // => http://localhost:3000
+//   //       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
+//   //     });
+//   //   })
   
-    .then(session =>{
-      res.render('auth/checkout', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        sessionId: session.id
-        /* datas? */
-    });
-    })  
-    .catch((err) => {
-      console.log(err);
-    });
-}
-=======
->>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c
+//     .then(session =>{
+//       res.render('auth/checkout', {
+//         path: '/checkout',
+//         pageTitle: 'Checkout',
+//         sessionId: session.id
+//         /* datas? */
+//     });
+//     })  
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
