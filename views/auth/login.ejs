@@ -7,9 +7,9 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <!-- <% if(errorMessage) { %>
+        <% if(errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
-        <% } %> -->
+        <% } %>
 
         <form class="login-form" action="/login" method="POST" novalidate>
             <label class="form-control">Login</label>
@@ -35,7 +35,7 @@
             </div>
             <!-- Do not forget to add the token and the name "_csrf"-->
             <!-- THE NAME MUST BE "_csrf"-->
-         
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="centered">
                 <button class="btn" type="submit">Login</button>
             </div>

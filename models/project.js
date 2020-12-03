@@ -8,13 +8,18 @@ const projectSchema = new Schema({
         required: true
     },
 
+    projectName:{
+        type: String,
+        required: true
+    },
+
     dateCreated: {
         type: Date,
         default: Date.now
     },
 
     projectFiles:{
-        type: String, //Path to folder of CAD files, CDN or test dir.
+        type: [String], //Path to folder of CAD files, CDN or test dir.
         required: true
     },
 
@@ -37,6 +42,11 @@ const projectSchema = new Schema({
         type: Boolean,
         default: false,
         require: true
+    },
+
+    employeeComment: {
+        type: String,
+        required: false
     }
 });
 

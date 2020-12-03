@@ -14,71 +14,6 @@ const stripe = require("stripe")
 >>>>>>> 4e22a6fba02439022d7a998659597dcd12de761c
 const User = require("../models/user");
 
-exports.getIndex = (req, res, next) => {
-  let message = req.flash("error");
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render("auth/index", {
-    path: "/",
-    pageTitle: "Index",
-    isAuthenticated: false,
-    errorMessage: message,
-    validationErrors: [],
-  });
-};
-
-exports.getFaq = (req, res, next) => {
-  let message = req.flash("error");
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render("auth/faq", {
-    path: "/faq",
-    pageTitle: "FAQ",
-    isAuthenticated: false,
-    errorMessage: message,
-    validationErrors: [],
-  });
-};
-
-exports.getAboutUs = (req, res, next) => {
-  let message = req.flash("error");
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render("auth/aboutUs", {
-    path: "/",
-    pageTitle: "About Us",
-    isAuthenticated: false,
-    errorMessage: message,
-    validationErrors: [],
-  });
-};
-
-exports.getAboutOurProcess = (req, res, next) => {
-  let message = req.flash("error");
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render("auth/aboutOurProcess", {
-    path: "/",
-    pageTitle: "About Our Process",
-    isAuthenticated: false,
-    errorMessage: message,
-    validationErrors: [],
-  });
-};
-
-
 // Nodemailer configuration
 const transporter = nodemailer.createTransport(
   sendgridTransport({
@@ -98,10 +33,10 @@ exports.getLogin = (req, res, next) => {
   } else {
     message = null;
   }
+
   res.render("auth/login", {
     path: "/login",
     pageTitle: "Login",
-    isAuthenticated: false,
     errorMessage: message,
     oldInput: {
       email: "",
@@ -112,7 +47,7 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.getSignup = (req, res, next) => {
-  let message = req.flash("error"); 
+  let message = req.flash("error");
   if (message.length > 0) {
     message = message[0];
   } else {
@@ -121,7 +56,6 @@ exports.getSignup = (req, res, next) => {
   res.render("auth/signup", {
     path: "/signup",
     pageTitle: "Sign up",
-    isAuthenticated: false,
     errorMessage: message,
     oldInput: {
       email: "",
@@ -143,7 +77,6 @@ exports.postLogin = (req, res, next) => {
     return res.status(422).render("auth/login", {
       path: "/login",
       pageTitle: "Login",
-      isAuthenticated: false,
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email: email,
@@ -160,7 +93,6 @@ exports.postLogin = (req, res, next) => {
         return res.status(422).render("auth/login", {
           path: "/login",
           pageTitle: "Login",
-          isAuthenticated: false,
           errorMessage: "Invalid email or password",
           oldInput: {
             email: email,
@@ -175,6 +107,21 @@ exports.postLogin = (req, res, next) => {
           if (passwordMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
+            req.session.isAdmin = user.isAdmin;
+            console.log("USER IS LOGGED IN");
+            // Return admin view
+            if (user.isAdmin === true) {
+              return req.session.save((err) => {
+                if (err === undefined) {
+                  // Do nothing
+                } else {
+                  console.log("ERROR saving session: " + err);
+                }
+                res.redirect("/admin/pending-projects");
+              });
+            }
+          } 
+          if (user.isAdmin === false) {
             return req.session.save((err) => {
               if (err === undefined) {
                 // Do nothing
@@ -187,7 +134,6 @@ exports.postLogin = (req, res, next) => {
           return res.status(422).render("auth/login", {
             path: "/login",
             pageTitle: "Login",
-            isAuthenticated: false,
             errorMessage: "Invalid email or password",
             oldInput: {
               email: email,
@@ -216,7 +162,6 @@ exports.postSignup = (req, res, next) => {
     return res.status(422).render("auth/signup", {
       path: "/signup",
       pageTitle: "Sign up",
-      isAuthenticated: false,
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email: email,
@@ -244,10 +189,10 @@ exports.postSignup = (req, res, next) => {
       // Send confirmation email
       transporter.sendMail({
         to: email,
-        from: "enter valid email in sendgrid",
+        from: "dev.leo.santos@gmail.com",
         subject: "Sign up succeeded!",
         html:
-          "<h1>Thank you! You have successfully signed up! You may now login!</h1>",
+          "<h1>Thank you!</h1><br /> <h2>You have successfully signed up!</h2><br /> <h3>You may now login!</h3>",
       });
     })
     .catch((err) => {
@@ -269,12 +214,13 @@ exports.postLogout = (req, res, next) => {
     } else {
       console.log("Error when destroying session: " + err);
     }
+    console.log("USER IS LOGGED OUT");
     res.redirect("/");
   });
 };
 
 exports.getReset = (req, res, next) => {
-  let message = req.flash("error"); 
+  let message = req.flash("error");
   if (message.length > 0) {
     message = message[0];
   } else {
