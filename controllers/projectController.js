@@ -44,7 +44,13 @@ exports.postCreateProject = (req, res) => {
     newProject.description = description;
     newProject.projectFiles = fileNames;
 
-    newProject.save();
+      newProject.save((err) => {
+          if(err) {
+              console.error('WARNING: Could not save project to database. Something is WRONG.');
+              req.flash('error', '500: server could not save project to database.');
+              res.status(500).redirect('/project/createProject');
+          }
+      });
 
     res.redirect('/project');
 
