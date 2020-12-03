@@ -33,8 +33,8 @@
           >
         </li>
         <li class="main-header__item">
-          <a class="<%= path === '/admin/pending-orders' ? 'active' : '' %>" href="/admin/pending-orders"
-            >Pending Orders</a 
+          <a class="<%= path === '/admin/pending-projects' ? 'active' : '' %>" href="/admin/pending-projects"
+            >Pending Projects</a 
           >
         </li>
         <li class="main-header__item">
@@ -42,7 +42,7 @@
             <!-- Do not forget to add the token and the name "_csrf"-->
             <!-- THE NAME MUST BE "_csrf"-->
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <button class="btn" type="submit">Logout</button>
+            <button class="btn-nav button" type="submit">Logout</button>
           </form>
         </li>
         <% } else { %>
