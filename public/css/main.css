@@ -60,8 +60,9 @@ form {
 }
 
 .main-header__item {
-  margin: 0 1rem;
-  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .main-header__item a {
   text-decoration: none;
@@ -86,6 +87,22 @@ form {
 .main-header__item2 a:hover,
 .main-header__item2 a:active,
 .main-header__item2 a.active {
+  color: #0090ff;
+}
+
+.btn-nav{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+  outline: inherit;
+  text-decoration: none;
+  color: white;
+}
+
+.button:hover {
   color: #0090ff;
 }
 
@@ -178,7 +195,7 @@ form {
   padding: 0.25rem 1rem;
   text-decoration: none;
   font: inherit;
-  border: 2px solid #003f66;
+  border: 2px solid #003f66a8;
   color: white;
   background: #0090ff;
   border-radius: 10px;
@@ -224,9 +241,9 @@ form {
 }
 
 .user-message--error {
-  border-color: red;
-  background-color: black;
-  color: red;
+  border-color: rgba(255, 0, 0, 0.555);
+  background-color: rgba(255, 163, 163, 0.308);
+  color: rgb(175, 0, 0);
 }
 
 .user-message--success {
