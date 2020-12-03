@@ -34,4 +34,16 @@ router.post(
     projectController.postCreateProject
 );
 
+router.get(
+    "/:projectId",
+    isAuth,
+    projectController.getProject
+);
+
+router.post(
+    "/agreeToQuote",
+    isAuth,
+    projectController.postAgreeToQuote
+);
+
 module.exports = router;
