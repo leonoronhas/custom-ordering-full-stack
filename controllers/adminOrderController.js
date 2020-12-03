@@ -1,10 +1,12 @@
 
+const project = require("../models/project.js");
 const Project = require("../models/project.js");
 
 exports.getPendingProjects = (req, res, next) => {
-    Project.find().then(projects => {
-        console.log("PROJECT ID ");
-        console.log(projects[0]._id);
+    Project.find({quotePrice: null}).then(projects => {
+        
+     console.log(projects);
+
         res.render("admin/pending-projects", {
             projects: projects,
             pageTitle: "Pending Projects",
@@ -16,8 +18,6 @@ exports.getPendingProjects = (req, res, next) => {
 exports.postPendingProjects = (req, res, next) => {
     const quotePrice = req.body.price;
     const projectId = req.body.projectId;
-    console.log("PROJECT ID ");
-    console.log(projectId);
 
     Project.findById(projectId)
     .then(project => {
@@ -25,7 +25,7 @@ exports.postPendingProjects = (req, res, next) => {
 
         return project.save().then(result => {
             console.log("Project Updated");
-            res.redirect("/admin/pending-orders");
+            res.redirect("/admin/pending-projects");
         })
     }).catch(err => console.log(err));
 };

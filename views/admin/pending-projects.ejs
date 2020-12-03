@@ -8,20 +8,21 @@
 
     <main>
         <% if (projects.length === 0) { %>
-            h1 class="centered">No pending projects</h1>
+            <h1 class="centered">No pending projects</h1>
         <% } else { %>
             <ul>
                 <% for (let i = 0; i < projects.length; i++) { %>
                     <li class="updateMe">
+                        <form action="/admin/pending-projects" method="POST">
                         <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
-                        <h2>Project ID: <%= projects[i]._id.toString() %></h2>
+                        <h2>Project Name: <%= projects[i].projectName %></h2>
                         <p>Submitted on: <%= projects[i].dateCreated.toUTCString() %><p>Due on: <%= new Date().toUTCString()  %></p></p>
                         <p>Description: <%= projects[i].description %></p>
                         <p>File Names:</p>
                         <% for (let j = 0; j < projects[i].projectFiles.length; j++) { %>
                             <li><%= projects[i].projectFiles[j] %></li>
                         <% } %>
-                        <form action="/admin/pending-projects" method="POST">
+                        
                         <div style="display: flex; flex-direction: row; justify-content: flex-start;">
                             <p>Quote Price:</p>
                             <input type="number" name="price" id="price" step="0.01" />
