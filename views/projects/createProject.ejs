@@ -4,22 +4,41 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-    <%- include('../includes/cnc.ejs') %>
 
-    <div class="centered">
-        <form action="/project/createProject?_csrf=<%= csrfToken %>" enctype="multipart/form-data" method="POST">
-            <input type="file" name="projectFiles" multiple>
-            <textarea name="description">
-                Enter Project Description Here
-            </textarea>
+    <main>
 
-            <!-- Do not forget to add the token and the name "_csrf"-->
-            <!-- THE NAME MUST BE "_csrf"-->
-            <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>" /> -->
+        <% if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
 
-            <button class="btn" type="submit">Submit Project</button>
-        </form>
-    </div>
+        <div class="centered">
+            <form action="/project/createProject?_csrf=<%= csrfToken %>"
+                  enctype="multipart/form-data"
+                  method="POST">
+
+                <label for="projectName">Project Name</label>
+                <input type="text"
+                       name="projectName"
+                       id="projectName"><br>
+
+                <label for="projectFiles"> Project Files </label>
+                <input type="file"
+                       name="projectFiles"
+                       id="projectFiles"
+                       multiple><br>
+
+                <label for="description"> Project Description </label>
+                <textarea name="description"
+                          id="description"></textarea><br>
+
+                <!-- Do not forget to add the token and the name "_csrf"-->
+                <!-- THE NAME MUST BE "_csrf"-->
+                <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>" /> -->
+
+                <button class="btn" type="submit">Submit Project</button>
+            </form>
+        </div>
+    </main>
 </body>
 
 <%- include('../includes/end.ejs') %>

@@ -53,6 +53,7 @@ const projectFileFilter = (req, file, cb) => {
              ext === '.stp' ||
              ext === '.blend' ||
              ext === '.FCStd' ||
+             ext === '.stl' ||
              ext === '.dxf'
            ) {
             cb(null, true);
