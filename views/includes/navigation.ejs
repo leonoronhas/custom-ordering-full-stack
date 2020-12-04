@@ -4,7 +4,7 @@
   <nav class="main-header__nav">
     <ul class="main-header__item-list">
       <div>
-        <% if (!isAuthenticated) { %>
+        <% if (!isAuthenticated || isAuthenticated && !isAdmin) { %>
         <li class="main-header__item">
           <a
             class="<%= path === '/' ? 'active' : '' %>"
@@ -16,8 +16,8 @@
           <% } else if (isAuthenticated && isAdmin) { %>
         <li class="main-header__item"></li>
           <a
-            class="<%= path === 'admin/pending-orders' ? 'active' : '' %>"
-            href="admin/pending-orders"
+            class="<%= path === 'admin/pending-projects' ? 'active' : '' %>"
+            href="pending-projects"
             style="padding: 0 0rem; margin: 0"
             ><img class="logo" src="/images/cncLogo.png" alt="CNC"
           /></a>
