@@ -89,4 +89,13 @@ router.get("/reset/:token", authController.getNewPassword);
 // POST -> /auth/new-password
 router.post("/new-password", authController.postNewPassword);
 
+
+// GET -> /checkout
+// router.get("/checkout", authController.getCheckout);
+
+// // GET -> /checkout/success
+// router.get("/checkout/success", authController.getCheckout);
+
+// // GET -> /checkout/cancel
+// router.get("/checkout/cancel", authController.getCheckout);
 module.exports = router;

@@ -4,6 +4,28 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "Home",
     });
   };
+
+/*****************************************************
+* USER
+*****************************************************/
+   exports.getUser = (req, res, next) => {
+    res.render("openLinks/user", {
+      path: "/open-links/user",
+      pageTitle: "User",
+    });
+  };
+
+/*****************************************************
+* Employee
+*****************************************************/
+   exports.getEmployee = (req, res, next) => {
+    res.render("openLinks/employee", {
+      path: "/admin/pending-projects",
+      pageTitle: "Employee",
+    });
+  };
+
+
   
   exports.getFaq = (req, res, next) => {
     res.render("openLinks/faq", {
@@ -25,6 +47,7 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "About Our Process",
     });
   };
+<<<<<<< HEAD
 
 
   /*****************************************************
@@ -46,3 +69,5 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "Employee",
     });
   };
+=======
+>>>>>>> fd794e242dbcd278ea636db3a97bd86f8ab3fc7b
