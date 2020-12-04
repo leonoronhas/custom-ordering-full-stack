@@ -27,7 +27,6 @@ router.get("/open-links/about-our-process", openLinksController.getAboutOurProce
 *****************************************************/
 router.get("/open-links/user", openLinksController.getUser);
 
-
 /*****************************************************
 * Employee - view an order
 *****************************************************/
