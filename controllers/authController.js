@@ -338,32 +338,6 @@ exports.postNewPassword = (req, res, next) => {
 //       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
 
 //   })
-
-//   // req.user
-//   //   .populate('cart.items.productId')
-//   //   .execPopulate()
-//   //   .then(user => {
-//   //     products = user.cart.items;
-//   //     total = 0;
-//   //     products.forEach(p => {
-//   //       total += p.quantity * p.productId.price;
-//   //     });
-
-//   //     return stripe.checkout.sessions.create({
-//   //       payment_method_types: ['card'],
-//   //       line_items: products.map(p => {
-//   //         return {
-//   //           name: p.productId.title,
-//   //           description: p.productId.description,
-//   //           amount: p.productId.price * 100,
-//   //           currency: 'usd',
-//   //           quantity: p.quantity
-//   //         };
-//   //       }),
-//   //       success_url: req.protocol + '://' + req.get('host') + '/checkout/success', // => http://localhost:3000
-//   //       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
-//   //     });
-//   //   })
   
 //     .then(session =>{
 //       res.render('auth/checkout', {
