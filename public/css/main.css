@@ -503,8 +503,8 @@ form {
     font-size: large;
   }
 
-  .padding-top-left{
-    padding-left: 300px;
-    padding-top: 10px;
+  .padding-top{
+    text-align: left;
+    padding-top: 20px;
   }
 }
