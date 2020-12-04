@@ -39,6 +39,7 @@ const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 const openLinksRoutes = require("./routes/open-links");
 const adminRoutes = require("./routes/admin");
+const accountRoutes = require("./routes/account");
 const orderRoutes = require("./routes/orders");
 
 // Middlewares
@@ -80,6 +81,7 @@ app.use("/project", projectRoutes);
 app.use(authRoutes);
 app.use(openLinksRoutes);
 app.use(orderRoutes);
+app.use(accountRoutes);
 app.use("/admin", adminRoutes);
 
 
