@@ -22,14 +22,4 @@ router.get("/open-links/about-us", openLinksController.getAboutUs);
 // GET -> /open-links/about-our-process
 router.get("/open-links/about-our-process", openLinksController.getAboutOurProcess);
 
-// /*****************************************************
-// * USER - create an order
-// *****************************************************/
-// router.get("/open-links/user", openLinksController.getUser);
-
-// ****************************************************
-// * Employee - view an order
-// ****************************************************
-// router.get("/open-links/employee", openLinksController.getEmployee);
-
 module.exports = router;

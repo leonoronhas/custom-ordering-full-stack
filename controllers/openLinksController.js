@@ -47,24 +47,3 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "About Our Process",
     });
   };
-
-
-//   /*****************************************************
-// * USER
-// *****************************************************/
-//    exports.getUser = (req, res, next) => {
-//     res.render("openLinks/user", {
-//       path: "/open-links/user",
-//       pageTitle: "User",
-//     });
-//   };
-
-// ****************************************************
-// * Employee
-// ****************************************************
-//    exports.getEmployee = (req, res, next) => {
-//     res.render("openLinks/employee", {
-//       path: "/admin/pending-projects",
-//       pageTitle: "Employee",
-//     });
-//   };
