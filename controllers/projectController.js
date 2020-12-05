@@ -14,7 +14,11 @@ exports.getProject = (req, res, next) => {
 
     if (project) {
       let error = req.flash("error");
-      if (error.length < 1) error = null;
+      if (error.length < 1) {
+        error = null;
+      } else {
+        error = error[0];
+      }
 
       const projectId = project._id;
       const projectName = project.projectName;
@@ -42,7 +46,11 @@ exports.getProject = (req, res, next) => {
 
 exports.getProjects = (req, res) => {
   let error = req.flash("error");
-  if (error.length < 1) error = null;
+  if (error.length < 1) {
+    error = null;
+  } else {
+    error = error[0];
+  }
 
   res.render("projects/projects", {
     path: "/project",
@@ -53,7 +61,11 @@ exports.getProjects = (req, res) => {
 
 exports.getCreateProject = (req, res) => {
   let error = req.flash("error");
-  if (error.length < 1) error = null;
+  if (error.length < 1) {
+    error = null;
+  } else {
+    error = error[0];
+  }
 
   res.render("projects/createProject", {
     path: "/project/createProject",
