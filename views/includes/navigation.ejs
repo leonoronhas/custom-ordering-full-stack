@@ -63,8 +63,14 @@
           </form>
         </li>
         <% } else { %>
+          <li class="main-header__item">
+            <a class="<%= path === '/project/createProject' ? 'active' : '' %>" href="/project/createProject"
+              >Get a Quote</a
+            >
+          </li>
         <li class="main-header__item">
           <a class="<%= path === '/admin-account' ? 'active' : '' %>" href="/account"
+            ><img class="logo-Person" src="/images/person.png" alt="CNC"
             >Account</a
           >
         </li>
