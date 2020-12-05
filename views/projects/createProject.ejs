@@ -8,36 +8,59 @@
     <main>
 
         <% if(errorMessage) { %>
-            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } %>
 
-        <div class="centered">
-            <form action="/project/createProject?_csrf=<%= csrfToken %>"
-                  enctype="multipart/form-data"
-                  method="POST">
-
-                <label for="projectName">Project Name</label>
-                <input type="text"
-                       name="projectName"
-                       id="projectName"><br>
-
-                <label for="projectFiles"> Project Files </label>
-                <input type="file"
-                       name="projectFiles"
-                       id="projectFiles"
-                       multiple><br>
-
-                <label for="description"> Project Description </label>
-                <textarea name="description"
-                          id="description"></textarea><br>
-
-                <!-- Do not forget to add the token and the name "_csrf"-->
-                <!-- THE NAME MUST BE "_csrf"-->
-                <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>" /> -->
-
-                <button class="btn" type="submit">Submit Project</button>
-            </form>
+        <div class="infoBox">
+            <p>Add your CAD files and anything extra we should know <br> and within 24 hours we’ll send you a quote</p>
         </div>
+
+        <div class="centered">
+            <div class="project-container">
+
+                <div class="left-column">
+                    <form action="/project/createProject?_csrf=<%= csrfToken %>" enctype="multipart/form-data"
+                        method="POST">
+                        <div class="content-left-x-large">
+                            <label for="projectName">Project Name-</label>
+                            <input class="project-name-input" maxlength="20" type="text" name="projectName"
+                                id="projectName"><br>
+                            <p></p>
+                        </div>
+                        <div class="content-left-large">
+                            <label for="description"> Project Description </label>
+                        </div>
+                        <div class="description-user">
+                            <textarea name="description" id="description" maxlength="250"></textarea><br>
+
+                        </div>
+
+                        <div class="padding-top">
+                            <button class="btn" type="submit">Submit Project</button>
+                        </div>
+
+                </div>
+
+                <div class="right-column">
+                    <div class="files">
+
+
+                        <div class="image-upload">
+                            <label for="projectFiles"> <img class="logo-upload" src="/images/upload.png" /> </label>
+
+                            <input type="file" name="projectFiles" id="projectFiles" multiple><br>
+                        </div>
+                        <!-- Do not forget to add the token and the name "_csrf"-->
+                        <!-- THE NAME MUST BE "_csrf"-->
+                        <!-- <input type="hidden" name="_csrf" value="<%= //csrfToken %>" /> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </form>
+
     </main>
 </body>
 
