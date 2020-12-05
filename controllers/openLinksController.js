@@ -5,28 +5,6 @@ exports.getIndex = (req, res, next) => {
     });
   };
 
-/*****************************************************
-* USER
-*****************************************************/
-   exports.getUser = (req, res, next) => {
-    res.render("openLinks/user", {
-      path: "/open-links/user",
-      pageTitle: "User",
-    });
-  };
-
-/*****************************************************
-* Employee
-*****************************************************/
-   exports.getEmployee = (req, res, next) => {
-    res.render("openLinks/employee", {
-      path: "/admin/pending-projects",
-      pageTitle: "Employee",
-    });
-  };
-
-
-  
   exports.getFaq = (req, res, next) => {
     res.render("openLinks/faq", {
       path: "/open-links/faq",
@@ -47,3 +25,5 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "About Our Process",
     });
   };
+
+
