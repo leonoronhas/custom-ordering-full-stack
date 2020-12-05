@@ -4,6 +4,7 @@
   <nav class="main-header__nav">
     <ul class="main-header__item-list">
       <div>
+        <% if (!isAuthenticated || isAuthenticated && !isAdmin) { %>
         <li class="main-header__item">
           <a
             class="<%= path === '/' ? 'active' : '' %>"
@@ -12,6 +13,16 @@
             ><img class="logo" src="/images/cncLogo.png" alt="CNC"
           /></a>
         </li>
+          <% } else if (isAuthenticated && isAdmin) { %>
+        <li class="main-header__item"></li>
+          <a
+            class="<%= path === 'admin/pending-projects' ? 'active' : '' %>"
+            href="pending-projects"
+            style="padding: 0 0rem; margin: 0"
+            ><img class="logo" src="/images/cncLogo.png" alt="CNC"
+          /></a>
+        </li>
+        <% } %>
       </div>
 
       <div class="leftContainer">
@@ -29,7 +40,8 @@
         <% } else if (isAuthenticated && isAdmin) { %>
         <li class="main-header__item">
           <a class="<%= path === '/account' ? 'active' : '' %>" href="/account"
-            >Account</a
+            > <img class="logo-Person" src="/images/person.png" alt="CNC"
+            /> Account</a
           >
         </li>
         <li class="main-header__item">
@@ -47,7 +59,7 @@
         </li>
         <% } else { %>
         <li class="main-header__item">
-          <a class="<%= path === '/account' ? 'active' : '' %>" href="/account"
+          <a class="<%= path === '/admin-account' ? 'active' : '' %>" href="/account"
             >Account</a
           >
         </li>
