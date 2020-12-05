@@ -336,15 +336,9 @@ form {
     align-content: center;
     float: left;
     width: 33.33%;
-<<<<<<< HEAD
-    height: 6rem;
-    background-color: #003f66;
-    color: white;
-=======
     height: 7rem;
     background-color: rgb(226, 226, 226);
     border-top: 2px solid rgb(128, 128, 128);
->>>>>>> 8fbbddd07af98d7f4109c1ea0c222e1cb455f8b1
   }
 
   /* Clear floats after the columns */
