@@ -403,13 +403,14 @@ form {
   }
 
   .description {
+    width: 400px;
+    word-wrap: break-word;
     background-color: white;
     padding-top: 0px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
     border: 2px solid  rgb(202, 202, 202);
-    min-width: 400px;
   }
 
   .description-user textarea{
