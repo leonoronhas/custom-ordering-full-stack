@@ -12,38 +12,41 @@
     <% } else { %>
 
     <% for (let i = 0; i < projects.length; i++) { %>
-    <div class="project-container2">
-        <div class="left-column">
-            <form action="/admin/pending-projects" method="POST">
-                <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
-                <div class="header">
-                    <h2><%= projects[i].projectName %></h2>
-                </div>
-                <p>
-                <h3>Description</h3>
-                <div class="description-padd">
-                    <div class="description">
-                        <p><%= projects[i].description %></p>
+        <% if  (projects[i].quotePrice === undefined) { %>
+            <% continue; %>
+        <% } %>
+        <div class="project-container2">
+            <div class="left-column">
+                <form action="/admin/pending-projects" method="POST">
+                    <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
+                    <div class="header">
+                        <h2><%= projects[i].projectName %></h2>
+                    </div>
+                    <p>
+                    <h3>Description</h3>
+                    <div class="description-padd">
+                        <div class="description">
+                            <p><%= projects[i].description %></p>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="right-column">
+                <div class="files">
+                    <% for (let j = 0; j < projects[i].projectFiles.length; j++) { %>
+                    <ul>
+                        <li> <img src="/images/fileB.png" style="height: 4rem;"
+                                alt="file"><%= projects[i].projectFiles[j] %></li>
+                    </ul>
+                    <% } %>
+
+                    <div class="quote">
+                        <p>Quote Price: <%= projects[i].quotePrice %></p>
                     </div>
                 </div>
-        </div>
-
-        <div class="right-column">
-            <div class="files">
-                <% for (let j = 0; j < projects[i].projectFiles.length; j++) { %>
-                <ul>
-                    <li> <img src="/images/fileB.png" style="height: 4rem;"
-                            alt="file"><%= projects[i].projectFiles[j] %></li>
-                </ul>
-                <% } %>
-
-                <div class="quote">
-                    <p>Quote Price: <%= projects[i].quotePrice %></p>
-                </div>
             </div>
-        </div>
 
-        </form>
+            </form>
         <% if (!projects[i].userAgreesWithQuote) { %>
             <form action="/update-order" method="POST">
                 <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
