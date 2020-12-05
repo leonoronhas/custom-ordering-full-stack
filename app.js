@@ -80,9 +80,9 @@ app.use((req, res, next) => {
 app.use("/project", projectRoutes);
 app.use(authRoutes);
 app.use(openLinksRoutes);
-app.use(orderRoutes);
 app.use(accountRoutes);
 app.use("/admin", adminRoutes);
+app.use(orderRoutes);
 
 
 // Handle different domains
