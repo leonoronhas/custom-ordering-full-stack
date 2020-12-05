@@ -336,7 +336,9 @@ form {
     align-content: center;
     float: left;
     width: 33.33%;
-    height: 7rem;
+    height: 6rem;
+    background-color: #003f66;
+    color: black;
     background-color: rgb(226, 226, 226);
     border-top: 2px solid rgb(128, 128, 128);
   }
