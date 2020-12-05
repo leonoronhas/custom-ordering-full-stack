@@ -38,6 +38,11 @@
           >
         </li>
         <% } else if (isAuthenticated && isAdmin) { %>
+          <li class="main-header__item">
+            <a class="<%= path === '/approved-projects' ? 'active' : '' %>" href="/approved-projects"
+              > Approved Projects</a
+            >
+          </li>
         <li class="main-header__item">
           <a class="<%= path === '/account' ? 'active' : '' %>" href="/account"
             > <img class="logo-Person" src="/images/person.png" alt="CNC"
@@ -61,6 +66,11 @@
         <li class="main-header__item">
           <a class="<%= path === '/admin-account' ? 'active' : '' %>" href="/account"
             >Account</a
+          >
+        </li>
+        <li class="main-header__item">
+          <a class="<%= path === '/quotes' ? 'active' : '' %>" href="/quotes"
+            >Quotes</a
           >
         </li>
         <li class="main-header__item">
