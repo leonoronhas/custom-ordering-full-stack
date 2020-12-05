@@ -1,40 +1,29 @@
-const Project = require('../models/project');
-  
-  exports.getOrders = (req, res, next) => {
-    Project.find({ 'customer': String})
-      .then(orders => {
-        console.log("ORDERS");
-        console.log(orders);
-        res.render('orders/orders', {
-          path: '/orders',
-          pageTitle: 'Your Orders',
-        });
-      })
-      .catch(err => { });
-  };
+const project = require("../models/project");
+const Project = require("../models/project");
 
-exports.postOrder = (req, res, next) => {
-    req.user
-      .populate('cart.items.productId')
-      .execPopulate()
-      .then(user => {
-        const products = user.cart.items.map(i => {
-          return { quantity: i.quantity, product: { ...i.productId._doc } };
-        });
-        const order = new Order({
-          user: {
-            email: req.user.email,
-            userId: req.user
-          },
-          products: products
-        });
-        return order.save();
-      })
-      .then(result => {
-        return req.user.clearCart();
-      })
-      .then(() => {
-        res.redirect('/orders');
-      })
-      .catch(err => {});
-  };
+exports.getOrders = (req, res, next) => {
+  Project.find({ customer: req.session.user._id })
+    .then((projects) => {
+
+      res.render("orders/orders", {
+        path: "/orders",
+        pageTitle: "Your Orders",
+        projects: projects,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.updateOrder = (req, res, next) => {
+  const projectId = req.body.projectId;
+  Project.findById(projectId)
+    .then((project) => {
+      project.userAgreesWithQuote = true;
+      project.save();
+
+      res.redirect("/orders");
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postOrder = (req, res, next) => {};

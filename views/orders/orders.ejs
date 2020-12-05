@@ -5,22 +5,68 @@
 
 <body>
    <%- include('../includes/navigation.ejs') %>
-   
-   <div class="padded">
-    <h2>Who are we?</h2>
-     <p>
-        We are students with a passion and a drive to create and help others create. 
-         <br> takes exactly one day. The quote will be sent to you to accept. Once it is accepted
-         <br> the order will be put into our queuing system and be manufactured in 1 to 3 days and
-         <br> shipped to in seven days.
-     </p>
+
+   <main>
+    <% if (projects.length === 0) { %>
+    <h1 class="centered">Currently No Pending Projects</h1>
+    <% } else { %>
+
+    <% for (let i = 0; i < projects.length; i++) { %>
+    <div class="project-container2">
+        <div class="left-column">
+            <form action="/admin/pending-projects" method="POST">
+                <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
+                <div class="header">
+                    <h2><%= projects[i].projectName %></h2>
+                </div>
+                <p>
+                <h3>Description</h3>
+                <div class="description-padd">
+                    <div class="description">
+                        <p><%= projects[i].description %></p>
+                    </div>
+                </div>
+        </div>
+
+        <div class="right-column">
+            <div class="files">
+                <% for (let j = 0; j < projects[i].projectFiles.length; j++) { %>
+                <ul>
+                    <li> <img src="/images/fileB.png" style="height: 4rem;"
+                            alt="file"><%= projects[i].projectFiles[j] %></li>
+                </ul>
+                <% } %>
+
+                <div class="quote">
+                    <p>Quote Price: <%= projects[i].quotePrice %></p>
+                </div>
+            </div>
+        </div>
+
+        </form>
+        <% if (!projects[i].userAgreesWithQuote) { %>
+            <form action="/update-order" method="POST">
+                <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
+                <div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                    <button class="btn2" type="submit">Agree to quote</button>
+                </div>
+            </form>
+        <% } %>
+        <% if (projects[i].userAgreesWithQuote) { %>
+            <form action="/create-order" method="POST">
+                <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
+                <div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                    <button class="btn" type="submit">Checkout</button>
+                </div>
+            </form>
+        <% } %>
     </div>
 
-    <div class="padded">
-    <h2>How Long Have We Been Doing This?</h2>
-         <p>
-            This is our first year of development.
-         </p>
-    </div>
-    
+    <p></p>
+    <% }; %>
+
+    <% } %>
+</main>
 <%- include('../includes/end.ejs') %>
