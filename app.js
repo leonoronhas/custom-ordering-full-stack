@@ -39,6 +39,7 @@ const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 const openLinksRoutes = require("./routes/open-links");
 const adminRoutes = require("./routes/admin");
+const orderRoutes = require("./routes/orders");
 const accountRoutes = require("./routes/account");
 
 // Middlewares
@@ -80,6 +81,7 @@ app.use("/project", projectRoutes);
 app.use(authRoutes);
 app.use(openLinksRoutes);
 app.use("/admin", adminRoutes);
+app.use(orderRoutes);
 app.use(accountRoutes);
 
 // Handle different domains

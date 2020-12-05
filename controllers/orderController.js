@@ -1,13 +1,13 @@
-const Product = require('../models/project');
-const Order = require('../models/order');
+const Project = require('../models/project');
   
   exports.getOrders = (req, res, next) => {
-    Order.find({ 'user.userId': req.user._id })
+    Project.find({ 'customer': String})
       .then(orders => {
+        console.log("ORDERS");
+        console.log(orders);
         res.render('orders/orders', {
           path: '/orders',
           pageTitle: 'Your Orders',
-          orders: orders
         });
       })
       .catch(err => { });
