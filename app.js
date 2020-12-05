@@ -39,7 +39,6 @@ const authRoutes = require("./routes/auth");
 const projectRoutes = require("./routes/projects");
 const openLinksRoutes = require("./routes/open-links");
 const adminRoutes = require("./routes/admin");
-const orderRoutes = require("./routes/orders");
 const accountRoutes = require("./routes/account");
 const orderRoutes = require("./routes/orders");
 
