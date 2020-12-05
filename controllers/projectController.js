@@ -144,3 +144,33 @@ exports.postAgreeToQuote = (req, res, next) => {
     }
   });
 };
+
+exports.deleteProject = (req, res, next) => {
+  const projectId = req.body.projectId;
+  const currentUserId = req.session.user._id;
+  const isUserAdmin = req.session.user.isAdmin;
+
+  if(isUserAdmin) {
+    console.log("Admin ID: " + currentUserId + "is attempting to delete"
+                + " project: " + projectId);
+  } else {
+    req.flash('error', "You can't delete that project.");
+    res.redirect('/project');
+    return;
+  }
+
+
+  Project.deleteOne({ _id: projectId }, (err) => {
+    if (err) {
+      console.error(
+        err
+      );
+      req.flash("error", "Could not delete this project.");
+      res.status(400).redirect("/project/createProject");
+      return;
+    }
+
+    res.redirect('/project');
+    return;
+  });
+}
