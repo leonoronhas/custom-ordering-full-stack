@@ -4,7 +4,7 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "Home",
     });
   };
-  
+
   exports.getFaq = (req, res, next) => {
     res.render("openLinks/faq", {
       path: "/open-links/faq",
@@ -25,3 +25,5 @@ exports.getIndex = (req, res, next) => {
       pageTitle: "About Our Process",
     });
   };
+
+
