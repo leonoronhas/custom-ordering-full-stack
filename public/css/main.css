@@ -6,9 +6,11 @@
 }
 
 body {
+  position:relative;
   padding: 0;
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
+  padding-bottom: 10rem;
 }
 
 main {
@@ -184,7 +186,7 @@ form {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%; 
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 5;
@@ -292,9 +294,26 @@ form {
     height: 3rem;
   }
 
+  .logo-Person {
+    width: 1.3rem;
+    height: 1.3rem;
+    position: relative;
+  }
+
+  .logo-upload{
+    padding-top: 10px;
+    width: 39rem;
+    height: 20rem;
+  }
+
   #footer {
-    position: absolute;
-    bottom: 0;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
     width: 100%;
   }
   
@@ -306,9 +325,15 @@ form {
     align-content: center;
     float: left;
     width: 33.33%;
+<<<<<<< HEAD
     height: 6rem;
     background-color: #003f66;
     color: white;
+=======
+    height: 7rem;
+    background-color: rgb(226, 226, 226);
+    border-top: 2px solid rgb(128, 128, 128);
+>>>>>>> 8fbbddd07af98d7f4109c1ea0c222e1cb455f8b1
   }
 
   /* Clear floats after the columns */
@@ -340,5 +365,153 @@ form {
     padding-top: 2rem;
   }
 
+  .project-container{
+    border: 2px solid black;
+    width: 70vw;
+    padding-left: 3rem;
+    background-color: rgb(226, 226, 226);
+    list-style-type: none;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items:  center;
+    width: 1300px;
+  }
+
+  .header{
+    padding-left: 20px;
+  }
+
+  .description-padd{
+    padding-bottom: 10px;
+  }
+
+  .description {
+    background-color: white;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid  rgb(202, 202, 202);
+    min-width: 400px;
+  }
+
+  .description-user textarea{
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 500px;
+    min-height: 100px;
+    font-size: 17px;
+  }
+
+  .files{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    justify-content: space-evenly;
+    align-content: center;
+    min-width: 600px;
+    min-height: 300px;
+  }
+
+  .files li{
+    list-style-type: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: block;
+  }
+
+  .files li img {
+    vertical-align: middle;
+  }
+
+
+
+  .quote{
+    padding-left: 5rem;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start;
+    padding-top: .5rem;
+    align-items: center;   
+     
+  }
+
+  .quote input{
+    border: 2px solid  rgb(202, 202, 202);
+    font-size: medium;
+    height: 3rem;
+    /* width: 7rem; */
+  }
+
+  .quote input button{
+    vertical-align: middle;
+  }
+
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    justify-content: space-evenly;
+    align-content: center;
+    
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    justify-content: space-evenly;
+    align-content: center;
+    border: 2px solid  rgb(202, 202, 202);
+  }
+
+  .center-btn{
+    padding-left: 20%
+  } 
+
+  .inline{
+    display: inline;
+    font-weight: bold;
+    font-size: 20px
+  }
+
+  .image-upload input{
+    display: inline;
+  }
+
+  .content-left-x-large{
+    text-align: left;
+    font-size: x-large;
+  }
+
+  .content-left-large{
+    text-align: left;
+    font-size: large;
+  }
+
+  .content-left-large input{
+
+    font-size: xx-large;
+  }
   
+  .project-name-input{
+    padding-top: 1rem;
+  }
+
+  .infoBox{
+    padding-left: 300px;;
+    font-size: large;
+  }
+
+  .padding-top{
+    text-align: left;
+    padding-top: 20px;
+  }
 }
