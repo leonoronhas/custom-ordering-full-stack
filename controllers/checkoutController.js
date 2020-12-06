@@ -1,25 +1,16 @@
-const path = require("path");
-const PDFDocument = require("pdfkit");
 const stripe = require("stripe")(
   "sk_test_51HqqvWHAqscsU7v6JTypi5rRtY08RViMXMau0zh8Mir8TDuJMUAQ7Px111gzznQvzjbWODuBmQR9D9qvUC9SSRme004k978m0T"
 );
 
 const Project = require("../models/project");
 
-exports.getPreCheckout = (req, res, next) => {
-  res.render("checkout/pre-checkout", {
-    path: "/pre-checkout",
-    pageTitle: "Checkout",
-  });
-};
-
 /*******************************************
  * CHECKOUT
  ********************************************/
 exports.getCheckout = (req, res, next) => {
   const projectId = req.params.projectId;
-  let project;
 
+  let project;
   Project.findById(projectId)
     .then((userProject) => {
       project = userProject;
@@ -34,17 +25,20 @@ exports.getCheckout = (req, res, next) => {
             description: project.description,
             amount: project.quotePrice,
             currency: "usd",
-            quantity: 1
+            quantity: 1,
           },
         ],
         success_url:
-          req.protocol + "://" + req.get("host") + "/checkout/success",
+          req.protocol +
+          "://" +
+          req.get("host") +
+          "/checkout/success/" +
+          project._id,
         cancel_url: req.protocol + "://" + req.get("host") + "/checkout/cancel",
       });
     })
     .then((session) => {
       project.paidProject = true;
-      console.log(project);
       res.render("checkout/checkout", {
         path: "/checkout",
         pageTitle: "Checkout",
@@ -52,15 +46,11 @@ exports.getCheckout = (req, res, next) => {
         project: project,
       });
     })
+    .then(() => {
+      console.log("PROJECT SAVED");
+      return project.save();
+    })
     .catch((err) => {
       console.log(err);
     });
-};
-
-
-exports.postOrder = (req, res, next) => {
-  res.render("orders/orders", {
-    path: "/orders",
-    pageTitle: "Orders",
-  });
 };
