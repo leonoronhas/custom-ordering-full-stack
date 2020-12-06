@@ -27,3 +27,18 @@ exports.postPendingProjects = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.getApprovedProjects = (req, res, next) => {
+  const userId = req.session.user._id;
+
+  const project = Project.find({ paidProject: true })
+    .then((projects) => {
+      console.log(projects);
+      res.render("admin/approved-projects", {
+        pageTitle: "Approved Projects",
+        path: "/admin/approved-projects",
+        projects: projects,
+      });
+    })
+    .catch((err) => console.log(err));
+};
