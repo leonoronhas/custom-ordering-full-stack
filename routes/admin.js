@@ -1,7 +1,4 @@
-const path = require("path");
-
 const express = require("express");
-const { body } = require("express-validator");
 const adminController = require("../controllers/adminOrderController");
 
 // Protect routes

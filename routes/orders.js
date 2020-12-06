@@ -1,27 +1,24 @@
 /********************************************************************
  *  orders Routes
- * 
+ *
  *  GET:
  *      create-order
  *  POST:
- *      create-order
+ *      update-order
  *
  *******************************************************************/
 const express = require("express");
 const router = express.Router();
-const { check, body } = require("express-validator");
 
 const orderController = require("../controllers/orderController");
 
 // Protect routes
 const isAuth = require("../middleware/is-auth");
 
-// GET -> orders/orders
-router.get('/orders', isAuth, orderController.getOrders);
+router.get("/orders", isAuth, orderController.getOrders);
 
-router.get('/orders/:orderId', isAuth, orderController.getInvoice);
+router.get("/orders/:orderId", isAuth, orderController.getInvoice);
 
-// POST -> orders/create-order
-router.post('/update-order', isAuth, orderController.updateOrder);
+router.post("/update-order", isAuth, orderController.updateOrder);
 
 module.exports = router;

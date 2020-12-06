@@ -1,21 +1,16 @@
-
-.box
-{
-	display: flex;
-	align-items: center;
-  	justify-content: center;
-    background: gray;
-    padding: 50px;
-    border-radius: 15px;
-    background-color: rgb(202, 202, 202);
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: gray;
+  padding: 50px;
+  border-radius: 15px;
+  background-color: rgb(202, 202, 202);
 }
 
-.center 
-{
- position: fixed;
+.center {
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-

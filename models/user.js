@@ -8,7 +8,6 @@ const Schema = mongoose.Schema;
  * Reset token for reset password feature
  ******************************************/
 const userSchema = new Schema({
-
   email: {
     type: String,
     required: true,
@@ -19,15 +18,15 @@ const userSchema = new Schema({
   },
   resetToken: {
     type: String,
-    default: ""
+    default: "",
   },
   resetTokenExpiration: {
-    type: Date
+    type: Date,
   },
   isAdmin: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

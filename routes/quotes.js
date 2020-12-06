@@ -1,15 +1,12 @@
 /********************************************************************
  *  Quotes Routes
- * 
+ *
  *  GET:
  *      quotes
- *  POST:
- *      
  *
  *******************************************************************/
 const express = require("express");
 const router = express.Router();
-const { check, body } = require("express-validator");
 
 const quotesController = require("../controllers/quotesController");
 
@@ -17,6 +14,6 @@ const quotesController = require("../controllers/quotesController");
 const isAuth = require("../middleware/is-auth");
 
 // GET -> orders/orders
-router.get('/quotes', isAuth, quotesController.getQuotes);
+router.get("/quotes", isAuth, quotesController.getQuotes);
 
 module.exports = router;
