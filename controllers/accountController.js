@@ -1,18 +1,11 @@
-const Project = require("../models/project.js");
-const Order = require('../models/order');
-
 exports.getAccount = (req, res, next) => {
-		const userEmail = req.session.user.email;
-		const role = req.session.user.isAdmin;
+  const userEmail = req.session.user.email;
+  const role = req.session.user.isAdmin;
 
-		res.render("account/account", {
-		pageTitle: "Account",
-		path: "/account",
-	        email: userEmail,
-	        userRole: role ? "Admin" : "Client"
-	});
-    res.render("account/account", {
-      pageTitle: "Account",
-      path: "/account",
-    });
-}
+  res.render("account/account", {
+    pageTitle: "Account",
+    path: "/account",
+    email: userEmail,
+    userRole: role ? "Admin" : "Client",
+  });
+};
