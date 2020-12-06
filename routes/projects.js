@@ -41,29 +41,25 @@ router.post(
                         req.flash('error', 'Some of your files were not accepted since they are incompatible with our application.');
                         req.flash('description', req.body.description)
                         req.flash('projectName', req.body.projectName)
-                        console.log('redirecting');
                         res.redirect('/project/createProject');
                         break;
                     case 'LIMIT_FILE_COUNT':
                         req.flash('error', 'You uploaded too many files. The maximum is 8. Please try again.');
                         req.flash('description', req.body.description)
                         req.flash('projectName', req.body.projectName)
-                        console.log('redirecting');
                         res.redirect('/project/createProject');
                         return;
                     case 'LIMIT_FILE_SIZE':
                         req.flash('error', 'One of your files was too big. Please try again.');
                         req.flash('description', req.body.description)
                         req.flash('projectName', req.body.projectName)
-                        console.log('redirecting');
                         res.redirect('/project/createProject');
                         return;
-                    default:
-                        console.err(err.code);
-                        res.redirect('/');
                 }
             } else if (err) {
                 console.log(err);
+                next();
+            } else {
                 next();
             }
     })},
