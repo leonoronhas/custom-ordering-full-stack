@@ -76,11 +76,25 @@ exports.getCreateProject = (req, res) => {
   } else {
     error = error[0];
   }
+  let description = req.flash("description");
+  if (description.length < 1) {
+    description = null;
+  } else {
+    description = description[0];
+  }
+  let projectName = req.flash("projectName");
+  if (projectName.length < 1) {
+    projectName = null;
+  } else {
+    projectName = projectName[0];
+  }
 
   res.render("projects/createProject", {
     path: "/project/createProject",
     pageTitle: "Create a New Project",
     errorMessage: error,
+    description: description,
+    projectName: projectName
   });
 };
 
@@ -108,6 +122,7 @@ exports.postCreateProject = (req, res) => {
     newProject.description = description;
     newProject.projectFiles = fileNames;
 
+    console.log('Saving project in postCreateProject.');
     newProject.save((err) => {
       if (err) {
         console.error(

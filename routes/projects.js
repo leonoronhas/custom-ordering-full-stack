@@ -36,9 +36,10 @@ router.post(
     (req, res, next) => {
         multiFileUp(req, res, (err) => {
             if (err instanceof multer.MulterError) {
+                console.error(err.code);
                 switch (err.code) {
                     case 'LIMIT_UNEXPECTED_FILE':
-                        req.flash('error', 'Some of your files were not accepted since they are incompatible with our application.');
+                        req.flash('error', 'Some of your files were not accepted since they are incompatible with our application or your tried uploading too many.');
                         req.flash('description', req.body.description)
                         req.flash('projectName', req.body.projectName)
                         res.redirect('/project/createProject');

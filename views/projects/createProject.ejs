@@ -21,14 +21,14 @@
                         <div class="content-left-x-large">
                             <label for="projectName">Project Name-</label>
                             <input class="project-name-input" maxlength="50" type="text" name="projectName" style="width: 330px;"
-                                id="projectName"><br>
+                                id="projectName" value="<%= projectName %>"><br>
                             <p></p>
                         </div>
                         <div class="content-left-large">
                             <label for="description"> Project Description </label>
                         </div>
                         <div class="description-user">
-                            <textarea name="description" id="description" maxlength="250"></textarea><br>
+                            <textarea name="description" id="description" maxlength="250"><%= description %></textarea><br>
                         </div>
                         <div class="padding-top">
                             <button class="btn" type="submit">Submit Project</button>
