@@ -13,8 +13,6 @@
 
         <% for (let i = 0; i < projects.length; i++) { %>
         <div class="project-container">
-
-
             <div class="left-column">
                 <form action="/admin/pending-projects" method="POST">
                     <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
@@ -40,10 +38,9 @@
                                 alt="file"><%= projects[i].projectFiles[j] %></li>
                     </ul>
                     <% } %>
-
                     <div class="quote">
                         <p>Quote Price:</p>
-                        <input type="number" name="price" id="price" step="0.01" />
+                        <input type="number" name="price" id="price" min="0" step="1" />
 
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                         <div class="center-btn">
@@ -51,9 +48,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
             </form>
         </div>
         <p></p>

@@ -5,11 +5,6 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 const { validationResult } = require("express-validator");
 require("dotenv/config");
 
-
-const stripe = require("stripe")
-       ('sk_test_51HqqvWHAqscsU7v6JTypi5rRtY08RViMXMau0zh8Mir8TDuJMUAQ7Px111gzznQvzjbWODuBmQR9D9qvUC9SSRme004k978m0T');
-
-
 const User = require("../models/user");
 
 // Nodemailer configuration
@@ -118,7 +113,7 @@ exports.postLogin = (req, res, next) => {
                 res.redirect("/admin/pending-projects");
               });
             }
-          } 
+          }
           if (user.isAdmin === false) {
             return req.session.save((err) => {
               if (err === undefined) {
@@ -322,32 +317,4 @@ exports.postNewPassword = (req, res, next) => {
     });
 };
 
-/*******************************************
-* CHECKOUT
-********************************************/
 
-// exports.getCheckout = (req, res, next) => 
-// {
-//   let product;
-//   return stripe.checkout.sessions.create({
-//     payment_method_types: ['card'],
-//         return {
-//           currency: 'usd'
-//         },
-//       success_url: req.protocol + '://' + req.get('host') + '/checkout/success',
-//       cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
-
-//   })
-  
-//     .then(session =>{
-//       res.render('auth/checkout', {
-//         path: '/checkout',
-//         pageTitle: 'Checkout',
-//         sessionId: session.id
-//         /* datas? */
-//     });
-//     })  
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }

@@ -68,12 +68,11 @@
               >Get a Quote</a
             >
           </li>
-        <li class="main-header__item">
-          <a class="<%= path === '/admin-account' ? 'active' : '' %>" href="/account"
-            ><img class="logo-Person" src="/images/person.png" alt="CNC"
-            >Account</a
-          >
-        </li>
+          <li class="main-header__item">
+            <a class="<%= path === '/project' ? 'active' : '' %>" href="/project"
+              >Projects</a
+            >
+          </li>
         <li class="main-header__item">
           <a class="<%= path === '/quotes' ? 'active' : '' %>" href="/quotes"
             >Quotes</a
@@ -82,6 +81,12 @@
         <li class="main-header__item">
           <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders"
             >Orders</a
+          >
+        </li>
+        <li class="main-header__item">
+          <a class="<%= path === '/admin-account' ? 'active' : '' %>" href="/account"
+            ><img class="logo-Person" src="/images/person.png" alt="CNC"
+            >Account</a
           >
         </li>
         <li class="main-header__item">

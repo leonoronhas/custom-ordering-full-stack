@@ -41,6 +41,8 @@ const openLinksRoutes = require("./routes/open-links");
 const adminRoutes = require("./routes/admin");
 const accountRoutes = require("./routes/account");
 const orderRoutes = require("./routes/orders");
+const quotesRoutes = require("./routes/quotes");
+const checkoutRoutes = require("./routes/checkout");
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -83,7 +85,8 @@ app.use(openLinksRoutes);
 app.use(accountRoutes);
 app.use("/admin", adminRoutes);
 app.use(orderRoutes);
-
+app.use(quotesRoutes);
+app.use(checkoutRoutes);
 
 // Handle different domains
 const corsOptions = {
