@@ -44,7 +44,7 @@ exports.getProject = (req, res, next) => {
   });
 };
 
-exports.getProjects = (req, res) => {
+exports.getProjects = (req, res, next) => {
   let error = req.flash("error");
   if (error.length < 1) {
     error = null;
@@ -52,11 +52,21 @@ exports.getProjects = (req, res) => {
     error = error[0];
   }
 
-  res.render("projects/projects", {
-    path: "/project",
-    pageTitle: "Projects",
-    errorMessage: error,
-  });
+  const currentUser = req.session.user;
+  Project.find({customer: currentUser._id}, (err, projects) => {
+    if(err) {
+      res.status('500');
+      next();
+    }
+
+    res.render("projects/projects", {
+      path: "/project",
+      pageTitle: "Projects",
+      projects: projects,
+      errorMessage: error
+    });
+  })
+
 };
 
 exports.getCreateProject = (req, res) => {
@@ -150,27 +160,42 @@ exports.deleteProject = (req, res, next) => {
   const currentUserId = req.session.user._id;
   const isUserAdmin = req.session.user.isAdmin;
 
-  if(isUserAdmin) {
-    console.log("Admin ID: " + currentUserId + "is attempting to delete"
-                + " project: " + projectId);
-  } else {
-    req.flash('error', "You can't delete that project.");
-    res.redirect('/project');
-    return;
-  }
-
-
-  Project.deleteOne({ _id: projectId }, (err) => {
-    if (err) {
-      console.error(
-        err
-      );
-      req.flash("error", "Could not delete this project.");
-      res.status(400).redirect("/project/createProject");
+  //Verify that the project exists and it matches the current
+  // user id to the customer id in the project document.
+  // Then Delete. Admins can bypass and they are logged.
+  Project.findById(projectId, (err, projectData) => {
+    if(!projectData) {
+      req.flash('error', "We can't find that project.");
+      res.redirect('/project');
       return;
     }
 
-    res.redirect('/project');
-    return;
+    if(String(currentUserId) != String(projectData.customer)) {
+      if(isUserAdmin) {
+        console.log("Admin ID: " + currentUserId + "is attempting to delete"
+                    + " project: " + projectId);
+      } else {
+        req.flash('error', "You can't delete that project.");
+        res.redirect('/project');
+        return;
+      }
+    }
+
+
+    Project.deleteOne({ _id: projectId }, (err) => {
+      if (err) {
+        console.error(
+          err
+        );
+        req.flash("error", "Could not delete this project.");
+        res.status(400).redirect("/project/createProject");
+        return;
+      }
+
+      res.redirect('/project');
+      return;
+    });
+
   });
+
 }
