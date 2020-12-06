@@ -3,7 +3,6 @@ const Project = require("../models/project");
 const path = require("path");
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
-const { throws } = require("assert");
 
 exports.getOrders = (req, res, next) => {
   Order.find({ "user.userId": req.session.user._id })
