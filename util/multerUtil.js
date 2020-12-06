@@ -58,7 +58,6 @@ const projectFileFilter = (req, file, cb) => {
            ) {
             cb(null, true);
         } else {
-            req.flash('error', 'Some of your files were not accepted since they are incompatible with our application.');
             cb(null, false);
         }
 }
