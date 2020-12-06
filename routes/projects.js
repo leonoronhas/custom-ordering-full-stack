@@ -46,4 +46,10 @@ router.post(
     projectController.postAgreeToQuote
 );
 
+router.post(
+    "/deleteProject",
+    isAuth,
+    projectController.deleteProject
+)
+
 module.exports = router;
