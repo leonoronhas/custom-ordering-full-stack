@@ -57,15 +57,6 @@
                             </div>
                         </form>
                     <% } %>
-                    <% if (projects[i].userAgreesWithQuote) { %>
-                        <form action="/create-order" method="POST">
-                            <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
-                            <div>
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-                                <button class="btn" type="submit">Checkout</button>
-                            </div>
-                        </form>
-                    <% } %>
                     <form action="/project/deleteProject" method="POST">
                         <input type="hidden" value="<%= projects[i]._id %>" name="projectId">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
@@ -78,7 +69,7 @@
 
     <% } %>
         <div class="centeredSpace">
-            <h3> <a href="/project/createProject"> Create New Project </a> </h3>
+            <h3> <a class="btn" href="/project/createProject"> Create New Project </a> </h3>
         </div>
     </main>
 </body>
