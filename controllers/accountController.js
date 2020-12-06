@@ -9,5 +9,3 @@ exports.getAccount = (req, res, next) => {
     userRole: role ? "Admin" : "Client",
   });
 };
-
-

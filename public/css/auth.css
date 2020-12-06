@@ -1,15 +1,15 @@
 .login-form {
-    width: 40rem;
-    max-width: 90%;
-    margin: auto;
-    display: block;
-    border: 1px solid #003f66;
-    border-color: #003f66;
-    padding: 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  }
+  width: 40rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+  border: 1px solid #003f66;
+  border-color: #003f66;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
 
-  .user-message user-message--error {
-    color: red;
-    background-color: rgba(255, 113, 113, 0.39);
-  }
+.user-message user-message--error {
+  color: red;
+  background-color: rgba(255, 113, 113, 0.39);
+}

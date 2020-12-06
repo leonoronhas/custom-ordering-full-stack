@@ -81,7 +81,9 @@ exports.getInvoice = (req, res, next) => {
       Project.findById(order.project).then((userproject) => {
         totalPrice = userproject.quotePrice;
         pdfDoc.fontSize(15).text("Project Name: " + userproject.projectName);
-        pdfDoc.fontSize(15).text("Project Description: " + userproject.description);
+        pdfDoc
+          .fontSize(15)
+          .text("Project Description: " + userproject.description);
         pdfDoc.fontSize(15).text("   ");
         pdfDoc.fontSize(15).text("Total: $" + totalPrice);
         pdfDoc.end();
