@@ -33,11 +33,6 @@ const projectSchema = new Schema({
         required: false
     },
 
-    employee:{ //The employee ID quoting/fulfilling project.
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
-
     userAgreesWithQuote: {
         type: Boolean,
         default: false,
@@ -46,6 +41,11 @@ const projectSchema = new Schema({
 
     employeeComment: {
         type: String,
+        required: false
+    },
+
+    paidProject: {
+        type: Boolean,
         required: false
     }
 });
